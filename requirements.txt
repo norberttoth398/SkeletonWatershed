@@ -1,48 +1,51 @@
-asttokens @ file:///home/conda/feedstock_root/build_artifacts/asttokens_1698341106958/work
-colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1666700638685/work
-comm @ file:///home/conda/feedstock_root/build_artifacts/comm_1710320294760/work
+asttokens==2.4.1
+colorama==0.4.6
+comm==0.2.2
 contourpy==1.2.1
 cycler==0.12.1
-debugpy @ file:///D:/bld/debugpy_1707444547228/work
-decorator @ file:///home/conda/feedstock_root/build_artifacts/decorator_1641555617451/work
-exceptiongroup @ file:///home/conda/feedstock_root/build_artifacts/exceptiongroup_1704921103267/work
-executing @ file:///home/conda/feedstock_root/build_artifacts/executing_1698579936712/work
+debugpy==1.8.1
+decorator==5.1.1
+exceptiongroup==1.2.0
+executing==2.0.1
 fonttools==4.53.0
 imageio==2.34.1
-importlib_metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1710971335535/work
-ipykernel @ file:///D:/bld/ipykernel_1717717683217/work
-ipython @ file:///D:/bld/ipython_1717182928131/work
-jedi @ file:///home/conda/feedstock_root/build_artifacts/jedi_1696326070614/work
-jupyter_client @ file:///home/conda/feedstock_root/build_artifacts/jupyter_client_1716472197302/work
-jupyter_core @ file:///D:/bld/jupyter_core_1710257272359/work
+importlib_metadata==7.1.0
+ipykernel==6.29.4
+ipython==8.25.0
+jedi==0.19.1
+jupyter_client==8.6.2
+jupyter_core==5.7.2
 kiwisolver==1.4.5
 lazy_loader==0.4
 matplotlib==3.9.0
-matplotlib-inline @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-inline_1713250518406/work
-nest_asyncio @ file:///home/conda/feedstock_root/build_artifacts/nest-asyncio_1705850609492/work
+matplotlib-inline==0.1.7
+nest_asyncio==1.6.0
 networkx==3.3
 numpy==2.0.0
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1718189413536/work
-parso @ file:///home/conda/feedstock_root/build_artifacts/parso_1712320355065/work
-pickleshare @ file:///home/conda/feedstock_root/build_artifacts/pickleshare_1602536217715/work
+packaging==24.1
+parso==0.8.4
+pickleshare==0.7.5
 pillow==10.3.0
-platformdirs @ file:///home/conda/feedstock_root/build_artifacts/platformdirs_1715777629804/work
-prompt_toolkit @ file:///home/conda/feedstock_root/build_artifacts/prompt-toolkit_1718047967974/work
-psutil @ file:///D:/bld/psutil_1705722518504/work
-pure-eval @ file:///home/conda/feedstock_root/build_artifacts/pure_eval_1642875951954/work
-Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1714846767233/work
+pip==24.0
+platformdirs==4.2.2
+prompt_toolkit==3.0.47
+psutil==5.9.8
+pure-eval==0.2.2
+Pygments==2.18.0
 pyparsing==3.1.2
-python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1709299778482/work
+python-dateutil==2.9.0
 pywin32==306
-pyzmq @ file:///D:/bld/pyzmq_1715024531233/work
+pyzmq==26.0.3
 scikit-image==0.23.2
 scipy==1.13.1
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
-stack-data @ file:///home/conda/feedstock_root/build_artifacts/stack_data_1669632077133/work
+setuptools==69.5.1
+six==1.16.0
+stack-data==0.6.2
 tifffile==2024.5.22
-tornado @ file:///D:/bld/tornado_1717722834267/work
+tornado==6.4.1
 tqdm==4.66.4
-traitlets @ file:///home/conda/feedstock_root/build_artifacts/traitlets_1713535121073/work
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1717802530399/work
-wcwidth @ file:///home/conda/feedstock_root/build_artifacts/wcwidth_1704731205417/work
-zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1718013267051/work
+traitlets==5.14.3
+typing_extensions==4.12.2
+wcwidth==0.2.13
+wheel==0.43.0
+zipp==3.19.2
