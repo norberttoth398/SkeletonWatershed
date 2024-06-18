@@ -1,1 +1,1 @@
-from SkelWatershed import skel_watershed
+from .SkelWatershed import skel_watershed
