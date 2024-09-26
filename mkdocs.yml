@@ -12,7 +12,7 @@ plugins:
   - mkdocs-jupyter
 
 nav:
-  - SkeletonWatershed: first_page.md
+  - SkeletonWatershed: index.md
   - Example:
     Example: Example.ipynb
   - Licence:
