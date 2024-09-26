@@ -22,7 +22,7 @@ def get_simple_min_pos(labs, distance, label):
     min_pos = np.argwhere(temp_dist == np.min(temp_dist))[0]
     return min_pos
 
-def convolve3d(image, filter, padding = (1, 1)):
+def convolve3d(image, filter, padding = (1, 1,1)):
     """_summary_
 
     Args:
