@@ -6,13 +6,33 @@ import skimage
 import tqdm
 
 def get_simple_min_pos(labs, distance, label):
+    """_summary_
+
+    Args:
+        labs (_type_): _description_
+        distance (_type_): _description_
+        label (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     temp_dist = distance.copy()
     temp_dist[labs != label] = 100*np.max(temp_dist)
 
     min_pos = np.argwhere(temp_dist == np.min(temp_dist))[0]
     return min_pos
 
-def convolve3d(image, filter, padding = (1, 1,1)):
+def convolve3d(image, filter, padding = (1, 1)):
+    """_summary_
+
+    Args:
+        image (_type_): _description_
+        filter (_type_): _description_
+        padding (tuple, optional): _description_. Defaults to (1, 1).
+
+    Returns:
+        _type_: _description_
+    """
     # For this to work neatly, filter and image should have the same number of channels
     # Alternatively, filter could have just 1 channel or 2 dimensions
     # from https://stackoverflow.com/questions/63036809/how-do-i-use-only-numpy-to-apply-filters-onto-images
@@ -34,7 +54,7 @@ def convolve3d(image, filter, padding = (1, 1,1)):
     print(padded_image.shape)
     
     m_k = padded_image.shape[0]*padded_image.shape[1]*padded_image.shape[2]
-
+    
     for x in tqdm.tqdm(range(padded_image.shape[0] - size_x + 1)): # -size_x + 1 is to keep the window within the bounds of the image
         for y in range(padded_image.shape[1] - size_y + 1):
             for z in range(padded_image.shape[2] - size_z + 1):
@@ -56,6 +76,16 @@ def convolve3d(image, filter, padding = (1, 1,1)):
 
 
 def convolve(image, filter, padding = (1, 1)):
+    """_summary_
+
+    Args:
+        image (_type_): _description_
+        filter (_type_): _description_
+        padding (tuple, optional): _description_. Defaults to (1, 1).
+
+    Returns:
+        _type_: _description_
+    """
     # For this to work neatly, filter and image should have the same number of channels
     # Alternatively, filter could have just 1 channel or 2 dimensions
     # from https://stackoverflow.com/questions/63036809/how-do-i-use-only-numpy-to-apply-filters-onto-images
@@ -97,6 +127,15 @@ def convolve(image, filter, padding = (1, 1)):
     return output_array
 
 def skel_markers(img, medial= True):
+    """_summary_
+
+    Args:
+        img (_type_): _description_
+        medial (bool, optional): _description_. Defaults to True.
+
+    Returns:
+        _type_: _description_
+    """
     
     print("running 2d")
     #get initial skeletonization
@@ -125,7 +164,7 @@ def skel_markers(img, medial= True):
     reg = skimage.measure.regionprops(labs)
     lines = {}
     for item in reg:
-        lines[item.label] = [item.area, np.min(distance[labs == item.label])] #if we calculate the max of the distance we get significant undersegmentation
+        lines[item.label] = [item.area, np.min(distance[labs == item.label])]
         
     #get new copy - label lines with specific label if they are not channels - need to check they touch or not?
     skel_labs = skel.astype("float64").copy()
@@ -146,6 +185,10 @@ def skel_markers(img, medial= True):
     #then merge those regions with new_img and then run label to find the distinct regions
     min_pos = []
     for item in channel_labs:
+        temp_dist = distance.copy()
+        temp_dist[labs != item] = 100*np.max(temp_dist)
+        #print(np.argwhere(temp_dist == np.min(temp_dist)))
+        
         min_pos.append(get_simple_min_pos(labs, distance, item))
         
     final_skel = skel.copy()
@@ -156,6 +199,14 @@ def skel_markers(img, medial= True):
     return final_labs, distance
 
 def skel_markers3d(img):
+    """_summary_
+
+    Args:
+        img (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     print("running 3D...")
     import scipy.ndimage as ndi
     distance = ndi.distance_transform_edt(img)
@@ -175,7 +226,6 @@ def skel_markers3d(img):
         [1,1,1],
         [1,1,1],
         [1,1,1]]],dtype=np.float32)
-    print(skel.shape)
     neigh = convolve3d(skel, filter).reshape(skel.shape[0], skel.shape[1], skel.shape[2])
     neigh = np.multiply(neigh, skel.astype("float64"))
     
@@ -186,7 +236,7 @@ def skel_markers3d(img):
     reg = skimage.measure.regionprops(labs)
     lines = {}
     for item in reg:
-        lines[item.label] = [item.area, np.min(distance[labs == item.label])]
+        lines[item.label] = [item.area, np.max(distance[labs == item.label])]
         
     #get new copy - label lines with specific label if they are not channels - need to check they touch or not?
     skel_labs = skel.astype("float64").copy()
@@ -221,6 +271,16 @@ def skel_markers3d(img):
     return final_labs, distance
     
 def skel_watershed(img, medial = True, threeD = False):
+    """_summary_
+
+    Args:
+        img (_type_): _description_
+        medial (bool, optional): _description_. Defaults to True.
+        threeD (bool, optional): _description_. Defaults to False.
+
+    Returns:
+        _type_: _description_
+    """
 
     if threeD:
         markers, distance = skel_markers3d(img)
